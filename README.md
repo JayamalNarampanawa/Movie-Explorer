@@ -5,6 +5,7 @@ A React movie discovery app built for the Loons Lab Associate Software Engineer 
 ## Features
 
 - Login screen with username and password fields
+- Public landing page with clear calls to action
 - Trending movies from TMDb
 - Movie search with infinite scrolling and a Load More fallback button
 - Movie detail page with overview, genres, cast, rating, runtime, release date, and trailer embed
@@ -47,10 +48,11 @@ REACT_APP_TMDB_API_KEY=your_tmdb_api_key_here
 4. Start the app:
 
 ```bash
-npm start
+npm run dev
 ```
 
 The app runs at `http://localhost:3000`.
+The landing page is available at `/`, and the protected movie app is available at `/discover`.
 
 ## Build
 

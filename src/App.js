@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { AppProvider, useAppContext } from './context/AppContext';
 import AppShell from './components/AppShell';
+import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
@@ -119,9 +120,10 @@ function AppRoutes() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
-          path="/"
+          path="/discover"
           element={
             <ProtectedRoute>
               <AppShell />

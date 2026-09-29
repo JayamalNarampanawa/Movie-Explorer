@@ -22,7 +22,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
 
   if (user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/discover" replace />;
   }
 
   const handleSubmit = (event) => {

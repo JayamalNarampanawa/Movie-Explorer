@@ -51,7 +51,7 @@ export default function MovieCard({ movie }) {
       }}
     >
       <Box sx={{ position: 'relative' }}>
-        <CardActionArea onClick={() => navigate(`/movie/${movie.id}`)} aria-label={`View ${movie.title}`}>
+        <CardActionArea onClick={() => navigate(`/discover/movie/${movie.id}`)} aria-label={`View ${movie.title}`}>
           <Box
             sx={{
               aspectRatio: '2 / 3',

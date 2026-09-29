@@ -30,7 +30,7 @@ export default function AppShell() {
   };
 
   const handleSearchFocus = () => {
-    navigate('/');
+    navigate('/discover');
     window.setTimeout(() => {
       document.getElementById('movie-search-input')?.focus();
     }, 100);
@@ -77,7 +77,7 @@ export default function AppShell() {
               <Typography
                 variant="h6"
                 component={NavLink}
-                to="/"
+                to="/discover"
                 sx={{ fontWeight: 800, whiteSpace: 'nowrap', letterSpacing: 0 }}
               >
                 Movie Explorer
@@ -92,7 +92,7 @@ export default function AppShell() {
               </Tooltip>
               <Button
                 component={NavLink}
-                to="/"
+                to="/discover"
                 startIcon={<HomeIcon />}
                 sx={{
                   display: { xs: 'none', sm: 'inline-flex' },
@@ -104,7 +104,7 @@ export default function AppShell() {
               </Button>
               <Button
                 component={NavLink}
-                to="/favorites"
+                to="/discover/favorites"
                 startIcon={<FavoriteIcon />}
                 sx={{
                   display: { xs: 'none', sm: 'inline-flex' },
@@ -143,10 +143,10 @@ export default function AppShell() {
           bgcolor: 'background.paper'
         }}
       >
-        <Button fullWidth component={NavLink} to="/" startIcon={<HomeIcon />}>
+        <Button fullWidth component={NavLink} to="/discover" startIcon={<HomeIcon />}>
           Home
         </Button>
-        <Button fullWidth component={NavLink} to="/favorites" startIcon={<FavoriteIcon />}>
+        <Button fullWidth component={NavLink} to="/discover/favorites" startIcon={<FavoriteIcon />}>
           Favorites
         </Button>
       </Box>
