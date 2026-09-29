@@ -2,6 +2,10 @@
 
 A React movie discovery app built for the Loons Lab Associate Software Engineer internship task.
 
+## Live Demo
+
+https://movie-explorer-blue-nu.vercel.app/
+
 ## Features
 
 - Login screen with username and password fields
