@@ -33,7 +33,12 @@ export default function SearchBar({ initialValue = '', onSearch }) {
           )
         }}
       />
-      <Button type="submit" variant="contained" startIcon={<SearchIcon />} sx={{ minHeight: 56, px: 3 }}>
+      <Button
+        type="submit"
+        variant="contained"
+        startIcon={<SearchIcon />}
+        sx={{ minHeight: 56, px: 3, width: { xs: '100%', sm: 'auto' } }}
+      >
         Search
       </Button>
     </Stack>

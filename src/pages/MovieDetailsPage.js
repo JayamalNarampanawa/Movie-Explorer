@@ -117,7 +117,10 @@ export default function MovieDetailsPage() {
               )}
             </Box>
             <Stack gap={2} sx={{ maxWidth: 820 }}>
-              <Typography variant="h2" sx={{ fontSize: { xs: 34, md: 56 } }}>
+              <Typography
+                variant="h2"
+                sx={{ fontSize: { xs: 32, sm: 40, md: 56 }, lineHeight: 1.05, overflowWrap: 'anywhere' }}
+              >
                 {movie.title}
               </Typography>
               <Stack direction="row" gap={1} flexWrap="wrap">
@@ -205,9 +208,14 @@ export default function MovieDetailsPage() {
               <Divider />
               {cast.length ? (
                 cast.map((person) => (
-                  <Stack key={person.cast_id || person.id} direction="row" justifyContent="space-between" gap={2}>
+                  <Stack
+                    key={person.cast_id || person.id}
+                    direction={{ xs: 'column', sm: 'row' }}
+                    justifyContent="space-between"
+                    gap={{ xs: 0.25, sm: 2 }}
+                  >
                     <Typography fontWeight={700}>{person.name}</Typography>
-                    <Typography color="text.secondary" textAlign="right">
+                    <Typography color="text.secondary" textAlign={{ xs: 'left', sm: 'right' }}>
                       {person.character}
                     </Typography>
                   </Stack>

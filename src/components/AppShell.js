@@ -59,10 +59,11 @@ export default function AppShell() {
         }}
       >
         <Container maxWidth="xl">
-          <Toolbar disableGutters sx={{ minHeight: 72, gap: 2 }}>
+          <Toolbar disableGutters sx={{ minHeight: 72, gap: { xs: 1, sm: 2 } }}>
             <Stack direction="row" alignItems="center" gap={1} sx={{ minWidth: 0, flex: 1 }}>
               <Box
                 sx={{
+                  flex: '0 0 auto',
                   width: 38,
                   height: 38,
                   display: 'grid',
@@ -78,13 +79,20 @@ export default function AppShell() {
                 variant="h6"
                 component={NavLink}
                 to="/discover"
-                sx={{ fontWeight: 800, whiteSpace: 'nowrap', letterSpacing: 0 }}
+                sx={{
+                  fontWeight: 800,
+                  whiteSpace: 'nowrap',
+                  letterSpacing: 0,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  maxWidth: { xs: 130, sm: 'none' }
+                }}
               >
                 Movie Explorer
               </Typography>
             </Stack>
 
-            <Stack direction="row" alignItems="center" gap={1}>
+            <Stack direction="row" alignItems="center" gap={{ xs: 0.25, sm: 1 }}>
               <Tooltip title="Search movies">
                 <IconButton color="primary" onClick={handleSearchFocus} aria-label="search movies">
                   <SearchIcon />
