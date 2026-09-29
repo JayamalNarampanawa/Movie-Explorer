@@ -4,6 +4,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #0f766e #e2e8f0;
+  scrollbar-width: thin;
 }
 
 body {
@@ -21,4 +23,63 @@ a {
 img {
   display: block;
   max-width: 100%;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 650ms ease,
+    transform 650ms ease;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0f766e, #22d3ee);
+  border: 3px solid #e2e8f0;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #115e59, #0891b2);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    scrollbar-color: #22d3ee #0f172a;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-color: #0f172a;
+  }
 }
