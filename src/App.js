@@ -17,22 +17,39 @@ function AppRoutes() {
   const { mode } = useAppContext();
 
   const theme = useMemo(
-    () =>
-      createTheme({
+    () => {
+      const isDark = mode === 'dark';
+
+      return createTheme({
         palette: {
           mode,
           primary: {
-            main: mode === 'dark' ? '#7dd3fc' : '#0f766e'
+            main: isDark ? '#22d3ee' : '#0f766e',
+            light: isDark ? '#67e8f9' : '#14b8a6',
+            dark: isDark ? '#0891b2' : '#115e59'
           },
           secondary: {
-            main: mode === 'dark' ? '#fbbf24' : '#7c3aed'
+            main: isDark ? '#fbbf24' : '#f59e0b',
+            light: '#fde68a',
+            dark: '#b45309'
           },
           background: {
-            default: mode === 'dark' ? '#10131b' : '#f5f7fb',
-            paper: mode === 'dark' ? '#171b26' : '#ffffff'
+            default: isDark ? '#090d16' : '#f4f7fb',
+            paper: isDark ? '#121826' : '#ffffff'
+          },
+          text: {
+            primary: isDark ? '#eef6ff' : '#172033',
+            secondary: isDark ? '#9fb0c7' : '#64748b'
+          },
+          divider: isDark ? 'rgba(148, 163, 184, 0.2)' : 'rgba(15, 23, 42, 0.1)',
+          action: {
+            hover: isDark ? 'rgba(34, 211, 238, 0.1)' : 'rgba(15, 118, 110, 0.08)'
           },
           success: {
             main: '#16a34a'
+          },
+          warning: {
+            main: '#f59e0b'
           }
         },
         shape: {
@@ -52,19 +69,49 @@ function AppRoutes() {
           MuiButton: {
             styleOverrides: {
               root: {
-                borderRadius: 8
+                borderRadius: 8,
+                boxShadow: 'none'
+              },
+              contained: {
+                boxShadow: isDark
+                  ? '0 12px 28px rgba(34, 211, 238, 0.18)'
+                  : '0 12px 28px rgba(15, 118, 110, 0.18)'
               }
             }
           },
           MuiCard: {
             styleOverrides: {
               root: {
-                borderRadius: 8
+                borderRadius: 8,
+                backgroundImage: 'none'
+              }
+            }
+          },
+          MuiPaper: {
+            styleOverrides: {
+              root: {
+                backgroundImage: 'none'
+              }
+            }
+          },
+          MuiOutlinedInput: {
+            styleOverrides: {
+              root: {
+                borderRadius: 8,
+                backgroundColor: isDark ? 'rgba(15, 23, 42, 0.72)' : 'rgba(255, 255, 255, 0.86)'
+              }
+            }
+          },
+          MuiChip: {
+            styleOverrides: {
+              root: {
+                fontWeight: 700
               }
             }
           }
         }
-      }),
+      });
+    },
     [mode]
   );
 

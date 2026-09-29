@@ -31,7 +31,23 @@ export default function MovieCard({ movie }) {
         flexDirection: 'column',
         overflow: 'hidden',
         border: 1,
-        borderColor: 'divider'
+        borderColor: 'divider',
+        boxShadow: (theme) =>
+          theme.palette.mode === 'dark'
+            ? '0 18px 42px rgba(0, 0, 0, 0.26)'
+            : '0 14px 34px rgba(15, 23, 42, 0.08)',
+        transition: 'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          borderColor: 'primary.main',
+          boxShadow: (theme) =>
+            theme.palette.mode === 'dark'
+              ? '0 24px 56px rgba(0, 0, 0, 0.38)'
+              : '0 22px 52px rgba(15, 23, 42, 0.14)'
+        },
+        '&:hover .movie-poster': {
+          transform: 'scale(1.04)'
+        }
       }}
     >
       <Box sx={{ position: 'relative' }}>
@@ -41,16 +57,31 @@ export default function MovieCard({ movie }) {
               aspectRatio: '2 / 3',
               bgcolor: 'action.hover',
               display: 'grid',
-              placeItems: 'center'
+              placeItems: 'center',
+              overflow: 'hidden',
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.45))',
+                opacity: poster ? 1 : 0
+              }
             }}
           >
             {poster ? (
               <Box
+                className="movie-poster"
                 component="img"
                 src={poster}
                 alt={`${movie.title} poster`}
                 loading="lazy"
-                sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'transform 220ms ease'
+                }}
               />
             ) : (
               <Typography color="text.secondary" sx={{ px: 2, textAlign: 'center' }}>
@@ -67,17 +98,29 @@ export default function MovieCard({ movie }) {
               position: 'absolute',
               top: 8,
               right: 8,
-              bgcolor: 'background.paper',
-              '&:hover': { bgcolor: 'background.paper' }
+              bgcolor: 'rgba(255, 255, 255, 0.9)',
+              boxShadow: '0 10px 24px rgba(0, 0, 0, 0.22)',
+              '&:hover': { bgcolor: '#fff' }
             }}
           >
             {favorite ? <FavoriteIcon color="secondary" /> : <FavoriteBorderIcon />}
           </IconButton>
         </Tooltip>
       </Box>
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardContent sx={{ flexGrow: 1, p: 1.75 }}>
         <Stack gap={1}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 800, lineHeight: 1.25 }}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              fontWeight: 800,
+              lineHeight: 1.25,
+              minHeight: 40,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden'
+            }}
+          >
             {movie.title}
           </Typography>
           <Stack direction="row" alignItems="center" justifyContent="space-between" gap={1}>
@@ -86,9 +129,10 @@ export default function MovieCard({ movie }) {
             </Typography>
             <Chip
               size="small"
-              color="primary"
+              color="secondary"
               icon={<StarIcon sx={{ fontSize: 16 }} />}
               label={ratingValue(movie.vote_average)}
+              sx={{ color: 'secondary.contrastText' }}
             />
           </Stack>
         </Stack>

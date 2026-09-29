@@ -19,6 +19,7 @@ export default function SearchBar({ initialValue = '', onSearch }) {
       sx={{ width: '100%' }}
     >
       <TextField
+        id="movie-search-input"
         fullWidth
         value={value}
         onChange={(event) => setValue(event.target.value)}

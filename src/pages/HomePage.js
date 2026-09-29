@@ -120,22 +120,64 @@ export default function HomePage() {
       <Paper
         elevation={0}
         sx={{
-          p: { xs: 2, md: 3 },
+          position: 'relative',
+          overflow: 'hidden',
+          p: { xs: 2.5, md: 3.5 },
           border: 1,
-          borderColor: 'divider'
+          borderColor: 'divider',
+          boxShadow: (theme) =>
+            theme.palette.mode === 'dark'
+              ? '0 20px 70px rgba(0, 0, 0, 0.26)'
+              : '0 18px 60px rgba(15, 23, 42, 0.08)',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background: (theme) =>
+              theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, rgba(34, 211, 238, 0.16), rgba(251, 191, 36, 0.06) 48%, transparent)'
+                : 'linear-gradient(135deg, rgba(20, 184, 166, 0.16), rgba(245, 158, 11, 0.08) 48%, transparent)'
+          }
         }}
       >
-        <Stack gap={2.5}>
+        <Stack gap={2.5} sx={{ position: 'relative' }}>
           <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" gap={2}>
             <Box>
-              <Typography variant="h3" sx={{ fontSize: { xs: 30, md: 42 } }}>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontSize: { xs: 30, md: 44 },
+                  maxWidth: 720,
+                  background: (theme) =>
+                    theme.palette.mode === 'dark'
+                      ? 'linear-gradient(90deg, #eef6ff, #67e8f9)'
+                      : 'linear-gradient(90deg, #172033, #0f766e)',
+                  backgroundClip: 'text',
+                  color: 'transparent'
+                }}
+              >
                 Discover Your Favorite Films
               </Typography>
               <Typography color="text.secondary" sx={{ mt: 1, maxWidth: 680 }}>
                 Search titles, browse trending movies, filter by taste, and save favorites locally.
               </Typography>
             </Box>
-            <Stack direction="row" alignItems="center" gap={1} color="primary.main">
+            <Stack
+              direction="row"
+              alignItems="center"
+              gap={1}
+              sx={{
+                alignSelf: { xs: 'flex-start', md: 'center' },
+                color: 'primary.main',
+                bgcolor: 'action.hover',
+                border: 1,
+                borderColor: 'divider',
+                borderRadius: 2,
+                px: 1.5,
+                py: 1
+              }}
+            >
               <TrendingUpIcon />
               <Typography variant="subtitle1" fontWeight={800}>
                 TMDb powered

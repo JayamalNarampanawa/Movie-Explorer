@@ -43,16 +43,39 @@ export default function LoginPage() {
         bgcolor: 'background.default',
         backgroundImage:
           theme.palette.mode === 'dark'
-            ? 'linear-gradient(135deg, rgba(125, 211, 252, 0.15), rgba(251, 191, 36, 0.08))'
-            : 'linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(124, 58, 237, 0.08))',
+            ? 'radial-gradient(circle at 24% 18%, rgba(34, 211, 238, 0.2), transparent 34%), linear-gradient(135deg, #090d16, #141827)'
+            : 'radial-gradient(circle at 24% 18%, rgba(20, 184, 166, 0.22), transparent 34%), linear-gradient(135deg, #eef7f5, #f8fafc)',
         py: 4
       }}
     >
       <Container maxWidth="sm">
-        <Paper elevation={0} sx={{ p: { xs: 3, sm: 4 }, border: 1, borderColor: 'divider' }}>
+        <Paper
+          elevation={0}
+          sx={{
+            p: { xs: 3, sm: 4 },
+            border: 1,
+            borderColor: 'divider',
+            boxShadow:
+              theme.palette.mode === 'dark'
+                ? '0 24px 80px rgba(0, 0, 0, 0.45)'
+                : '0 24px 80px rgba(15, 23, 42, 0.12)'
+          }}
+        >
           <Stack gap={3}>
             <Stack gap={1} alignItems="flex-start">
-              <MovieFilterIcon color="primary" sx={{ fontSize: 42 }} />
+              <Box
+                sx={{
+                  width: 56,
+                  height: 56,
+                  display: 'grid',
+                  placeItems: 'center',
+                  borderRadius: 2,
+                  color: '#fff',
+                  background: 'linear-gradient(135deg, #0f766e, #22d3ee)'
+                }}
+              >
+                <MovieFilterIcon sx={{ fontSize: 32 }} />
+              </Box>
               <Typography variant="h4">Movie Explorer</Typography>
               <Typography color="text.secondary">
                 Sign in to search movies, explore trending titles, and keep a local favorites list.

@@ -73,7 +73,11 @@ export default function MovieDetailsPage() {
         sx={{
           overflow: 'hidden',
           border: 1,
-          borderColor: 'divider'
+          borderColor: 'divider',
+          boxShadow: (theme) =>
+            theme.palette.mode === 'dark'
+              ? '0 24px 70px rgba(0, 0, 0, 0.36)'
+              : '0 24px 70px rgba(15, 23, 42, 0.14)'
         }}
       >
         <Box
@@ -84,8 +88,8 @@ export default function MovieDetailsPage() {
             p: { xs: 2, md: 4 },
             color: '#fff',
             backgroundImage: backdrop
-              ? `linear-gradient(90deg, rgba(0,0,0,0.82), rgba(0,0,0,0.36)), url(${backdrop})`
-              : 'linear-gradient(135deg, #0f766e, #334155)',
+              ? `linear-gradient(90deg, rgba(3, 7, 18, 0.9), rgba(15, 118, 110, 0.5), rgba(3, 7, 18, 0.28)), url(${backdrop})`
+              : 'linear-gradient(135deg, #0f766e, #172033)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
@@ -97,7 +101,10 @@ export default function MovieDetailsPage() {
                 aspectRatio: '2 / 3',
                 bgcolor: 'rgba(255,255,255,0.15)',
                 border: 1,
-                borderColor: 'rgba(255,255,255,0.3)'
+                borderColor: 'rgba(255,255,255,0.35)',
+                borderRadius: 1,
+                overflow: 'hidden',
+                boxShadow: '0 24px 60px rgba(0, 0, 0, 0.42)'
               }}
             >
               {poster && (
@@ -114,7 +121,7 @@ export default function MovieDetailsPage() {
                 {movie.title}
               </Typography>
               <Stack direction="row" gap={1} flexWrap="wrap">
-                <Chip icon={<StarIcon />} label={`${ratingValue(movie.vote_average)} rating`} />
+                <Chip color="secondary" icon={<StarIcon />} label={`${ratingValue(movie.vote_average)} rating`} />
                 <Chip label={releaseYear(movie.release_date)} />
                 {movie.runtime ? <Chip label={`${movie.runtime} min`} /> : null}
               </Stack>
@@ -148,7 +155,19 @@ export default function MovieDetailsPage() {
 
       <Grid container spacing={3}>
         <Grid item xs={12} md={7}>
-          <Paper elevation={0} sx={{ p: 3, border: 1, borderColor: 'divider', height: '100%' }}>
+          <Paper
+            elevation={0}
+            sx={{
+              p: 3,
+              border: 1,
+              borderColor: 'divider',
+              height: '100%',
+              boxShadow: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? '0 16px 42px rgba(0, 0, 0, 0.22)'
+                  : '0 14px 34px rgba(15, 23, 42, 0.07)'
+            }}
+          >
             <Stack gap={2}>
               <Typography variant="h5">Movie Info</Typography>
               <Divider />
@@ -168,7 +187,19 @@ export default function MovieDetailsPage() {
           </Paper>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Paper elevation={0} sx={{ p: 3, border: 1, borderColor: 'divider', height: '100%' }}>
+          <Paper
+            elevation={0}
+            sx={{
+              p: 3,
+              border: 1,
+              borderColor: 'divider',
+              height: '100%',
+              boxShadow: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? '0 16px 42px rgba(0, 0, 0, 0.22)'
+                  : '0 14px 34px rgba(15, 23, 42, 0.07)'
+            }}
+          >
             <Stack gap={2}>
               <Typography variant="h5">Top Cast</Typography>
               <Divider />
@@ -190,7 +221,18 @@ export default function MovieDetailsPage() {
       </Grid>
 
       {trailer && (
-        <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, border: 1, borderColor: 'divider' }}>
+        <Paper
+          elevation={0}
+          sx={{
+            p: { xs: 2, md: 3 },
+            border: 1,
+            borderColor: 'divider',
+            boxShadow: (theme) =>
+              theme.palette.mode === 'dark'
+                ? '0 16px 42px rgba(0, 0, 0, 0.22)'
+                : '0 14px 34px rgba(15, 23, 42, 0.07)'
+          }}
+        >
           <Stack gap={2}>
             <Typography variant="h5">Trailer</Typography>
             <Box
